@@ -74,7 +74,7 @@ SSLKEYLOGFILE entries corresponding to TLS 1.3 secrets for connections that succ
 
 # Security Considerations
 
-The applicability statement of {{!I-D.ietf-tls-keylogfile}} also applies to this document: if unauthorized   entities gain access to the logged secrets then the core guarantees that TLS provides are completely undermined. This extension is intended for use in systems where TLS only protects test data. 
+The applicability statement of {{!I-D.ietf-tls-keylogfile}} also applies to this document: if unauthorized   entities gain access to the logged secrets then the core guarantees that TLS provides are completely undermined. This extension is intended for use in systems where TLS only protects test data.
 
 Access to ECH_SECRET record in SSLKEYLOGFILE allows attacker to decrypt ECH extension and defeat privacy benefits offered by the ECH. Security considerations described in SSLKEYLOGFILE are fully applicable to this extension.
 

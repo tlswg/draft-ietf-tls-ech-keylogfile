@@ -27,6 +27,10 @@ author:
     fullname: Yaroslav Rosomakho
     organization: Zscaler
     email: yrosomakho@zscaler.com
+  -
+    name: Hannes Tschofenig
+    organization: University of Applied Sciences Bonn-Rhein-Sieg
+    email: Hannes.Tschofenig@gmx.net
 
 normative:
 
@@ -55,16 +59,13 @@ In many implementations, the file that the secrets are logged to is specified in
 
 This document defines two new labels for SSLKEYLOGFILE format: ECH_SECRET and ECH_CONFIG. The client SHOULD log the labels if it offered ECH regardless of server acceptance. The server MAY log the labels only if it successfully decrypted and accepted ECH offered by the client. The 32-byte random value from the Outer ClientHello message is used as the client_random value for these log records. The client MUST NOT log the labels for connections that use the GREASE ECH extension (see Section 6.2 of {{!I-D.ietf-tls-esni}}).
 
-
 ## ECH_SECRET
 
 This label corresponds to the KEM shared secret derived during the HPKE key schedule process. Length of the secret is defined by the KEM negotiated for use with ECH.
 
-
 ## ECH_CONFIG
 
 This label is used to log the ECHConfig used for construction of the ECH extension. Note that the value is logged in hexadecimal representation, similarly to other entries in the SSLKEYLOGFILE.
-
 
 # Client_random for other TLS 1.3 SSLKEYLOGFILE Entries
 
@@ -80,7 +81,7 @@ This specification extends the SSLKEYLOGFILE specification {{!I-D.ietf-tls-keylo
 
 - Access to the ECH_SECRET record in the SSLKEYLOGFILE allows the attacker to decrypt the ECH extension and thereby reveal the content of the ClientHello message, including the payload of the Server Name Indication (SNI) extension.
 
-- Access to the HPKE-established shared secret introduces potential attack surface against the HPKE process.
+- Access to the HPKE-established shared secret introduces a potential attack surface against the HPKE library since access to this keying material is not ncessarily available otherwise.
 
 Implementers MUST take measures to prevent unauthorized access to the SSLKEYLOGFILE text file.
 

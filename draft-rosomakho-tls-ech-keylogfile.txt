@@ -4,8 +4,9 @@
 
 Transport Layer Security                                    Y. Rosomakho
 Internet-Draft                                                   Zscaler
-Intended status: Informational                               4 July 2024
-Expires: 5 January 2025
+Intended status: Informational                             H. Tschofenig
+Expires: 5 January 2025   University of Applied Sciences Bonn-Rhein-Sieg
+                                                             4 July 2024
 
 
         SSLKEYLOGFILE Extension for Encrypted Client Hello (ECH)
@@ -86,7 +87,7 @@ Table of Contents
      7.1.  Normative References
      7.2.  Informative References
    Acknowledgments
-   Author's Address
+   Authors' Addresses
 
 1.  Introduction
 
@@ -168,14 +169,18 @@ Table of Contents
       content of the ClientHello message, including the payload of the
       Server Name Indication (SNI) extension.
 
-   *  Access to the HPKE-established shared secret introduces potential
-      attack surface against the HPKE process.
+   *  Access to the HPKE-established shared secret introduces a
+      potential attack surface against the HPKE library since access to
+      this keying material is not ncessarily available otherwise.
 
    Implementers MUST take measures to prevent unauthorized access to the
    SSLKEYLOGFILE text file.
 
-   This extension is intended for use in systems where TLS only protects
-   test data.
+   According to SSLKEYLOGFILE specification [I-D.ietf-tls-keylogfile],
+   this extension is intended for use in systems where TLS only protects
+   test data.  While the access this information provides to TLS
+   connections can be useful for diagnosing problems during development,
+   this mechanism MUST NOT be used in a production environment.
 
 6.  IANA Considerations
 
@@ -233,10 +238,16 @@ Table of Contents
 
 Acknowledgments
 
-   TODO acknowledge.
+   We would like to thank Stephen Farrell, Martin Thomson and Peter Wu
+   for their review comments.
 
-Author's Address
+Authors' Addresses
 
    Yaroslav Rosomakho
    Zscaler
    Email: yrosomakho@zscaler.com
+
+
+   Hannes Tschofenig
+   University of Applied Sciences Bonn-Rhein-Sieg
+   Email: Hannes.Tschofenig@gmx.net

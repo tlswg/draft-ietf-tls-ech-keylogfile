@@ -91,10 +91,9 @@ This extension is intended for use in systems where TLS only protects test data.
 
 This document has no IANA actions.
 
-
 --- back
 
 # Acknowledgments
 {:numbered="false"}
 
-TODO acknowledge.
+We would like to thank Stephen Farrell and Martin Thomson for their review comments.

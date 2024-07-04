@@ -27,7 +27,7 @@ author:
     fullname: Yaroslav Rosomakho
     organization: Zscaler
     email: yrosomakho@zscaler.com
-  -
+ -
     name: Hannes Tschofenig
     organization: University of Applied Sciences Bonn-Rhein-Sieg
     email: Hannes.Tschofenig@gmx.net

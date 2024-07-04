@@ -96,4 +96,4 @@ This document has no IANA actions.
 # Acknowledgments
 {:numbered="false"}
 
-We would like to thank Stephen Farrell and Martin Thomson for their review comments.
+We would like to thank Stephen Farrell, Martin Thomson and Peter Wu for their review comments.

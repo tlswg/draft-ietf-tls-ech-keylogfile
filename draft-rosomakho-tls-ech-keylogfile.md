@@ -96,4 +96,4 @@ This document has no IANA actions.
 # Acknowledgments
 {:numbered="false"}
 
-TODO acknowledge.
+Stephen Farrel, Martin Thomson, and Peter Wu provided initial reviews and important suggestions.

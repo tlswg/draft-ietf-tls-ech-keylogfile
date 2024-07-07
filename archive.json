@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-04T00:52:35.628955+00:00",
+  "timestamp": "2024-07-07T00:57:14.626681+00:00",
   "repo": "yaroslavros/tls-ech-keylog",
   "labels": [
     {
@@ -56,26 +56,133 @@
       "id": "PR_kwDOMBZrcM5zXuCj",
       "title": "Update draft-rosomakho-tls-ech-keylogfile.md",
       "url": "https://github.com/yaroslavros/tls-ech-keylog/pull/1",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "hannestschofenig",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Changed abstract, intro and security consideration section.",
       "createdAt": "2024-06-24T13:45:30Z",
-      "updatedAt": "2024-06-24T14:26:39Z",
+      "updatedAt": "2024-07-04T09:48:17Z",
       "baseRepository": "yaroslavros/tls-ech-keylog",
       "baseRefName": "main",
       "baseRefOid": "6afa9744b3618741829d565274837267aac19466",
       "headRepository": "yaroslavros/tls-ech-keylog",
       "headRefName": "hannestschofenig-patch-1",
-      "headRefOid": "ade53f0dbed8c60b8069eca340ad6b5fce2c5afc",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "836d35e260079340de383d2b486cf203b4f30812",
+      "closedAt": "2024-07-04T09:48:16Z",
+      "mergedAt": "2024-07-04T09:48:16Z",
+      "mergedBy": "yaroslavros",
+      "mergeCommit": {
+        "oid": "a5995297bff08c339f816bbe9cca6988a2e48b6b"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOMBZrcM6AqCuh",
+          "commit": {
+            "abbreviatedOid": "836d35e"
+          },
+          "author": "yaroslavros",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-07-04T09:47:57Z",
+          "updatedAt": "2024-07-04T09:47:57Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "id": "PR_kwDOMBZrcM50bMZL",
+      "title": "Update draft-rosomakho-tls-ech-keylogfile.md",
+      "url": "https://github.com/yaroslavros/tls-ech-keylog/pull/2",
+      "state": "MERGED",
+      "author": "yaroslavros",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-07-04T09:56:35Z",
+      "updatedAt": "2024-07-04T18:29:02Z",
+      "baseRepository": "yaroslavros/tls-ech-keylog",
+      "baseRefName": "main",
+      "baseRefOid": "a5995297bff08c339f816bbe9cca6988a2e48b6b",
+      "headRepository": "yaroslavros/tls-ech-keylog",
+      "headRefName": "yaroslav-patch-1",
+      "headRefOid": "a29f7e3ea8501c6ce4d7fa88ebd46bb1a26c2fbb",
+      "closedAt": "2024-07-04T18:28:59Z",
+      "mergedAt": "2024-07-04T18:28:59Z",
+      "mergedBy": "hannestschofenig",
+      "mergeCommit": {
+        "oid": "eebd3bd5c655cd5a1225e7e3985b2cd08a10bceb"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOMBZrcM6AtZob",
+          "commit": {
+            "abbreviatedOid": "7b6ecc1"
+          },
+          "author": "hannestschofenig",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-04T18:28:43Z",
+          "updatedAt": "2024-07-04T18:28:43Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\nAccording to SSLKEYLOGFILE specification {{!I-D.ietf-tls-keylogfile}}, this extension is intended for use in systems where TLS only protects test data. While the access this information provides to TLS connections can be useful for diagnosing problems during development, this mechanism MUST NOT be used in a production environment.\r\n```",
+              "createdAt": "2024-07-04T18:28:43Z",
+              "updatedAt": "2024-07-04T18:28:43Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "id": "PR_kwDOMBZrcM50bREJ",
+      "title": "Added acknowledgments",
+      "url": "https://github.com/yaroslavros/tls-ech-keylog/pull/3",
+      "state": "MERGED",
+      "author": "yaroslavros",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-07-04T10:07:14Z",
+      "updatedAt": "2024-07-04T18:26:15Z",
+      "baseRepository": "yaroslavros/tls-ech-keylog",
+      "baseRefName": "main",
+      "baseRefOid": "86f8ebef699bb6f5281f4b73b43d490fc92ef357",
+      "headRepository": "yaroslavros/tls-ech-keylog",
+      "headRefName": "yaroslav-patch-2",
+      "headRefOid": "6a5b97115f190e5666fe41bab839e5592936a8ed",
+      "closedAt": "2024-07-04T18:26:09Z",
+      "mergedAt": "2024-07-04T18:26:09Z",
+      "mergedBy": "hannestschofenig",
+      "mergeCommit": {
+        "oid": "94afe29f290344323965118268129befedf0afbe"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOMBZrcM6AtZE2",
+          "commit": {
+            "abbreviatedOid": "993e47b"
+          },
+          "author": "hannestschofenig",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-07-04T18:25:30Z",
+          "updatedAt": "2024-07-04T18:25:30Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }

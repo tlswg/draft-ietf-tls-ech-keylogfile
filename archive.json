@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-25T00:54:05.731244+00:00",
+  "timestamp": "2024-07-28T00:58:03.932045+00:00",
   "repo": "yaroslavros/tls-ech-keylog",
   "labels": [
     {
@@ -49,7 +49,24 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "number": 4,
+      "id": "I_kwDOMBZrcM6Q4Bjy",
+      "title": "Compile-time control",
+      "url": "https://github.com/yaroslavros/tls-ech-keylog/issues/4",
+      "state": "OPEN",
+      "author": "yaroslavros",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "From Rich Salz on TLS WG mailing list:\r\n\r\n> I want the security considerations to recommend that this SHOULD be controlled by compile-time options, if possible, and definitely not enabled in general production use.",
+      "createdAt": "2024-07-25T17:18:36Z",
+      "updatedAt": "2024-07-25T17:18:36Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
   "pulls": [
     {
       "number": 1,

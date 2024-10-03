@@ -2,7 +2,7 @@
 title: "SSLKEYLOGFILE Extension for Encrypted Client Hello (ECH)"
 category: info
 
-docname: draft-rosomakho-tls-ech-keylogfile-latest
+docname: draft-ietf-tls-ech-keylogfile-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
@@ -18,8 +18,8 @@ venue:
   type: "Working Group"
   mail: "tls@ietf.org"
   arch: "https://mailarchive.ietf.org/arch/browse/tls/"
-  github: "yaroslavros/tls-ech-keylog"
-  latest: "https://yaroslavros.github.io/tls-ech-keylog/draft-rosomakho-tls-ech-keylogfile.html"
+  github: "tlswg/draft-ietf-tls-ech-keylogfile"
+  latest: "https://tlswg.github.io/draft-ietf-tls-ech-keylogfile/draft-ietf-tls-ech-keylogfile.html"
 
 author:
  -

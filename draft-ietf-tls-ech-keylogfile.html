@@ -6,30 +6,31 @@
 <meta content="initial-scale=1.0" name="viewport">
 <title>SSLKEYLOGFILE Extension for Encrypted Client Hello (ECH)</title>
 <meta content="Yaroslav Rosomakho" name="author">
+<meta content="Hannes Tschofenig" name="author">
 <meta content="
        This document specifies an extension to the SSLKEYLOGFILE format to support the logging of information about Encrypted Client Hello (ECH) related secrets. Two new labels are introduced, namely ECH_SECRET and ECH_CONFIG, which log the Hybrid Public Key Encryption (HPKE)-derived shared secret and the ECHConfig used for the ECH, respectively. 
        This extension aims to facilitate debugging of TLS connections employing ECH. 
     " name="description">
-<meta content="xml2rfc 3.22.0" name="generator">
+<meta content="xml2rfc 3.23.2" name="generator">
 <meta content="encrypted client hello" name="keyword">
 <meta content="sslkeylog" name="keyword">
-<meta content="draft-rosomakho-tls-ech-keylogfile-latest" name="ietf.draft">
+<meta content="draft-ietf-tls-ech-keylogfile-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.22.0
-    Python 3.12.3
+  xml2rfc 3.23.2
+    Python 3.12.6
     ConfigArgParse 1.7
-    google-i18n-address 3.1.0
+    google-i18n-address 3.1.1
     intervaltree 3.1.0
     Jinja2 3.1.4
     lxml 4.9.4
-    platformdirs 4.2.2
+    platformdirs 4.3.6
     pycountry 22.3.5
     PyYAML 6.0.1
     requests 2.32.3
-    setuptools 69.5.1
+    setuptools 70.3.0
     wcwidth 0.2.13
 -->
-<link href="draft-rosomakho-tls-ech-keylogfile.xml" rel="alternate" type="application/rfc+xml">
+<link href="draft-ietf-tls-ech-keylogfile.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
 <style type="text/css">@font-face {
   font-family: 'Lora';
@@ -1026,11 +1027,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">SSLKEYLOGFILE Extension for Encrypted Cl</td>
-<td class="right">July 2024</td>
+<td class="right">October 2024</td>
 </tr></thead>
 <tfoot><tr>
-<td class="left">Rosomakho</td>
-<td class="center">Expires 5 January 2025</td>
+<td class="left">Rosomakho &amp; Tschofenig</td>
+<td class="center">Expires 6 April 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1040,20 +1041,24 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dt class="label-workgroup">Workgroup:</dt>
 <dd class="workgroup">Transport Layer Security</dd>
 <dt class="label-internet-draft">Internet-Draft:</dt>
-<dd class="internet-draft">draft-rosomakho-tls-ech-keylogfile-latest</dd>
+<dd class="internet-draft">draft-ietf-tls-ech-keylogfile-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-07-04" class="published">4 July 2024</time>
+<time datetime="2024-10-03" class="published">3 October 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-01-05">5 January 2025</time></dd>
-<dt class="label-authors">Author:</dt>
+<dd class="expires"><time datetime="2025-04-06">6 April 2025</time></dd>
+<dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
       <div class="author-name">Y. Rosomakho</div>
 <div class="org">Zscaler</div>
+</div>
+<div class="author">
+      <div class="author-name">H. Tschofenig</div>
+<div class="org">University of Applied Sciences Bonn-Rhein-Sieg</div>
 </div>
 </dd>
 </dl>
@@ -1070,15 +1075,15 @@ svg :is([fill="white"], [fill^="#fff"]) {
       </h2>
 <p id="section-note.1-1">This note is to be removed before publishing as an RFC.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
 <p id="section-note.1-2">
-        The latest revision of this draft can be found at <span><a href="https://yaroslavros.github.io/tls-ech-keylog/draft-rosomakho-tls-ech-keylogfile.html">https://yaroslavros.github.io/tls-ech-keylog/draft-rosomakho-tls-ech-keylogfile.html</a></span>.
-        Status information for this document may be found at <span><a href="https://datatracker.ietf.org/doc/draft-rosomakho-tls-ech-keylogfile/">https://datatracker.ietf.org/doc/draft-rosomakho-tls-ech-keylogfile/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
+        The latest revision of this draft can be found at <span><a href="https://tlswg.github.io/draft-ietf-tls-ech-keylogfile/draft-ietf-tls-ech-keylogfile.html">https://tlswg.github.io/draft-ietf-tls-ech-keylogfile/draft-ietf-tls-ech-keylogfile.html</a></span>.
+        Status information for this document may be found at <span><a href="https://datatracker.ietf.org/doc/draft-ietf-tls-ech-keylogfile/">https://datatracker.ietf.org/doc/draft-ietf-tls-ech-keylogfile/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
 <p id="section-note.1-3">
         Discussion of this document takes place on the
         Transport Layer Security Working Group mailing list (<span><a href="mailto:tls@ietf.org">mailto:tls@ietf.org</a></span>),
         which is archived at <span><a href="https://mailarchive.ietf.org/arch/browse/tls/">https://mailarchive.ietf.org/arch/browse/tls/</a></span>.
         Subscribe at <span><a href="https://www.ietf.org/mailman/listinfo/tls/">https://www.ietf.org/mailman/listinfo/tls/</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
 <p id="section-note.1-4">Source for this draft and an issue tracker can be found at
-        <span><a href="https://github.com/yaroslavros/tls-ech-keylog">https://github.com/yaroslavros/tls-ech-keylog</a></span>.<a href="#section-note.1-4" class="pilcrow">¶</a></p>
+        <span><a href="https://github.com/tlswg/draft-ietf-tls-ech-keylogfile">https://github.com/tlswg/draft-ietf-tls-ech-keylogfile</a></span>.<a href="#section-note.1-4" class="pilcrow">¶</a></p>
 </section>
 <div id="status-of-memo">
 <section id="section-boilerplate.1">
@@ -1099,7 +1104,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 5 January 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 6 April 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1169,7 +1174,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-toc.1-1.8.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
-            <p id="section-toc.1-1.9.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+            <p id="section-toc.1-1.9.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1240,11 +1245,11 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
           <p id="section-5-3.1.1">Access to the ECH_SECRET record in the SSLKEYLOGFILE allows the attacker to decrypt the ECH extension and thereby reveal the content of the ClientHello message, including the payload of the Server Name Indication (SNI) extension.<a href="#section-5-3.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-5-3.2">
-          <p id="section-5-3.2.1">Access to the HPKE-established shared secret introduces potential attack surface against the HPKE process.<a href="#section-5-3.2.1" class="pilcrow">¶</a></p>
+          <p id="section-5-3.2.1">Access to the HPKE-established shared secret introduces a potential attack surface against the HPKE library since access to this keying material is not ncessarily available otherwise.<a href="#section-5-3.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="section-5-4">Implementers <span class="bcp14">MUST</span> take measures to prevent unauthorized access to the SSLKEYLOGFILE text file.<a href="#section-5-4" class="pilcrow">¶</a></p>
-<p id="section-5-5">This extension is intended for use in systems where TLS only protects test data.<a href="#section-5-5" class="pilcrow">¶</a></p>
+<p id="section-5-5">According to SSLKEYLOGFILE specification <span>[<a href="#I-D.ietf-tls-keylogfile" class="cite xref">I-D.ietf-tls-keylogfile</a>]</span>, this extension is intended for use in systems where TLS only protects test data. While the access this information provides to TLS connections can be useful for diagnosing problems during development, this mechanism <span class="bcp14">MUST NOT</span> be used in a production environment.<a href="#section-5-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
@@ -1255,6 +1260,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <p id="section-6-1">This document has no IANA actions.<a href="#section-6-1" class="pilcrow">¶</a></p>
 </section>
 </div>
+<div id="sec-combined-references">
 <section id="section-7">
       <h2 id="name-references">
 <a href="#section-7" class="section-number selfRef">7. </a><a href="#name-references" class="section-name selfRef">References</a>
@@ -1267,7 +1273,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <dl class="references">
 <dt id="I-D.ietf-tls-esni">[I-D.ietf-tls-esni]</dt>
         <dd>
-<span class="refAuthor">Rescorla, E.</span>, <span class="refAuthor">Oku, K.</span>, <span class="refAuthor">Sullivan, N.</span>, and <span class="refAuthor">C. A. Wood</span>, <span class="refTitle">"TLS Encrypted Client Hello"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tls-esni-18</span>, <time datetime="2024-03-04" class="refDate">4 March 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-esni-18">https://datatracker.ietf.org/doc/html/draft-ietf-tls-esni-18</a>&gt;</span>. </dd>
+<span class="refAuthor">Rescorla, E.</span>, <span class="refAuthor">Oku, K.</span>, <span class="refAuthor">Sullivan, N.</span>, and <span class="refAuthor">C. A. Wood</span>, <span class="refTitle">"TLS Encrypted Client Hello"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tls-esni-22</span>, <time datetime="2024-09-15" class="refDate">15 September 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-esni-22">https://datatracker.ietf.org/doc/html/draft-ietf-tls-esni-22</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-tls-keylogfile">[I-D.ietf-tls-keylogfile]</dt>
         <dd>
@@ -1314,18 +1320,19 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 </section>
 </div>
 </section>
+</div>
 <div id="acknowledgments">
 <section id="appendix-A">
       <h2 id="name-acknowledgments">
 <a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
       </h2>
-<p id="appendix-A-1">TODO acknowledge.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<p id="appendix-A-1">We would like to thank Stephen Farrell, Martin Thomson and Peter Wu for their review comments.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">
 <section id="appendix-B">
-      <h2 id="name-authors-address">
-<a href="#name-authors-address" class="section-name selfRef">Author's Address</a>
+      <h2 id="name-authors-addresses">
+<a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
       </h2>
 <address class="vcard">
         <div dir="auto" class="left"><span class="fn nameRole">Yaroslav Rosomakho</span></div>
@@ -1333,6 +1340,14 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <div class="email">
 <span>Email:</span>
 <a href="mailto:yrosomakho@zscaler.com" class="email">yrosomakho@zscaler.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Hannes Tschofenig</span></div>
+<div dir="auto" class="left"><span class="org">University of Applied Sciences Bonn-Rhein-Sieg</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:Hannes.Tschofenig@gmx.net" class="email">Hannes.Tschofenig@gmx.net</a>
 </div>
 </address>
 </section>

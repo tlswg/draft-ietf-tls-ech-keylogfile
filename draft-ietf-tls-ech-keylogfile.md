@@ -112,7 +112,7 @@ This documents defines two additional labels in {{labels}}:
 
 New assignments in the "SSLKEYLOGFILE Labels" registry will be administered by IANA through Expert Review {{!RFC8126}}.
 Designated Experts are requested to ensure that defined labels do not overlap in names or semantics, and have clear definitions.
-   
+
 Registration requests must be sent to the tls@ietf.org mailing list for review and comment, with an appropriate subject
 (e.g., "Request for SSLKEYLOGFILE Label: example").
 
@@ -122,7 +122,7 @@ suggestions as to how to make the request successful.
 
 IANA must only accept registry updates from the Designated Experts and should direct all requests for registration
 to the TLS mailing list.
-   
+
 --- back
 
 # Acknowledgments

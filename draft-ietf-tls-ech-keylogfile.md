@@ -89,7 +89,7 @@ According to SSLKEYLOGFILE specification {{!I-D.ietf-tls-keylogfile}}, this exte
 
 # IANA Considerations
 
-IANA is requested to create a new registry "SSLKEYLOGFILE labels", within the existing "Transport Layer Security (TLS) Parameters" registry page.
+IANA is requested to create a new registry "SSLKEYLOGFILE Labels", within the existing "Transport Layer Security (TLS) Parameters" registry page.
 This new registry reserves labels used for SSLKEYLOGFILE entries.
 The initial contents of this registry are as follows.
 

@@ -85,7 +85,7 @@ This specification extends the SSLKEYLOGFILE specification {{!I-D.ietf-tls-keylo
 
 Implementers MUST take measures to prevent unauthorized access to the SSLKEYLOGFILE text file.
 
-According to SSLKEYLOGFILE specification {{!I-D.ietf-tls-keylogfile}}, this extension is intended for use in systems where TLS only protects test data. While the access this information provides to TLS connections can be useful for diagnosing problems during development, this mechanism MUST NOT be used in a production environment. To minimize risks of accidentally enabling this mechanism in production environments implementers SHOULD provide relevant compile-time controls.
+As per the SSLKEYLOGFILE specification {{!I-D.ietf-tls-keylogfile}}, this extension is intended for use in environments where TLS protects only test data. While the access it provides to TLS connections can be valuable for debugging during development, this mechanism MUST NOT be used in production environments. To minimize the risk of accidental activation in production, implementers SHOULD incorporate appropriate compile-time controls.
 
 # IANA Considerations
 

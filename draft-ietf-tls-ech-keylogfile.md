@@ -28,9 +28,10 @@ author:
     organization: Zscaler
     email: yrosomakho@zscaler.com
  -
-    name: Hannes Tschofenig
-    organization: University of Applied Sciences Bonn-Rhein-Sieg
-    email: Hannes.Tschofenig@gmx.net
+   name: Hannes Tschofenig
+   org: University of Applied Sciences Bonn-Rhein-Sieg
+   abbrev: H-BRS
+   email: Hannes.Tschofenig@gmx.net
 
 normative:
 

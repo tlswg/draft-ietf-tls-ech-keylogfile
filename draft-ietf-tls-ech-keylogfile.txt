@@ -5,8 +5,8 @@
 Transport Layer Security                                    Y. Rosomakho
 Internet-Draft                                                   Zscaler
 Intended status: Informational                             H. Tschofenig
-Expires: 23 April 2025                                             H-BRS
-                                                         20 October 2024
+Expires: 24 April 2025                                             H-BRS
+                                                         21 October 2024
 
 
         SSLKEYLOGFILE Extension for Encrypted Client Hello (ECH)
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 April 2025.
+   This Internet-Draft will expire on 24 April 2025.
 
 Copyright Notice
 
@@ -171,20 +171,101 @@ Table of Contents
 
    *  Access to the HPKE-established shared secret introduces a
       potential attack surface against the HPKE library since access to
-      this keying material is not ncessarily available otherwise.
+      this keying material is normally not available otherwise.
 
    Implementers MUST take measures to prevent unauthorized access to the
    SSLKEYLOGFILE text file.
 
-   According to SSLKEYLOGFILE specification [I-D.ietf-tls-keylogfile],
-   this extension is intended for use in systems where TLS only protects
-   test data.  While the access this information provides to TLS
-   connections can be useful for diagnosing problems during development,
-   this mechanism MUST NOT be used in a production environment.
+   As per the SSLKEYLOGFILE specification [I-D.ietf-tls-keylogfile],
+   this extension is intended for use in environments where TLS protects
+   only test data.  While the access it provides to TLS connections can
+   be valuable for debugging during development, this mechanism MUST NOT
+   be used in production environments.  To minimize the risk of
+   accidental activation in production, implementers SHOULD incorporate
+   appropriate compile-time controls.
 
 6.  IANA Considerations
 
-   This document has no IANA actions.
+   IANA is requested to create a new registry "SSLKEYLOGFILE Labels",
+   within the existing "Transport Layer Security (TLS) Parameters"
+   registry page.  This new registry reserves labels used for
+   SSLKEYLOGFILE entries.  The initial contents of this registry are as
+   follows.
+
+   +===============================+===========+=========================+
+   |Value                          |Description|Reference                |
+   +===============================+===========+=========================+
+   |CLIENT_RANDOM                  |Master     |[I-D.ietf-tls-keylogfile]|
+   |                               |secret in  |                         |
+   |                               |TLS 1.2 and|                         |
+   |                               |earlier    |                         |
+   +-------------------------------+-----------+-------------------------+
+   |CLIENT_EARLY_TRAFFIC_SECRET    |Secret for |[I-D.ietf-tls-keylogfile]|
+   |                               |client     |                         |
+   |                               |early data |                         |
+   |                               |records    |                         |
+   +-------------------------------+-----------+-------------------------+
+   |EARLY_EXPORTER_MASTER_SECRET   |Early      |[I-D.ietf-tls-keylogfile]|
+   |                               |exporters  |                         |
+   |                               |secret     |                         |
+   +-------------------------------+-----------+-------------------------+
+   |CLIENT_HANDSHAKE_TRAFFIC_SECRET|Secret     |[I-D.ietf-tls-keylogfile]|
+   |                               |protecting |                         |
+   |                               |client     |                         |
+   |                               |handshake  |                         |
+   +-------------------------------+-----------+-------------------------+
+   |SERVER_HANDSHAKE_TRAFFIC_SECRET|Secret     |[I-D.ietf-tls-keylogfile]|
+   |                               |protecting |                         |
+   |                               |server     |                         |
+   |                               |handshake  |                         |
+   +-------------------------------+-----------+-------------------------+
+   |CLIENT_TRAFFIC_SECRET_0        |Secret     |[I-D.ietf-tls-keylogfile]|
+   |                               |protecting |                         |
+   |                               |client     |                         |
+   |                               |records    |                         |
+   |                               |post       |                         |
+   |                               |handshake  |                         |
+   +-------------------------------+-----------+-------------------------+
+   |SERVER_TRAFFIC_SECRET_0        |Secret     |[I-D.ietf-tls-keylogfile]|
+   |                               |protecting |                         |
+   |                               |server     |                         |
+   |                               |records    |                         |
+   |                               |post       |                         |
+   |                               |handshake  |                         |
+   +-------------------------------+-----------+-------------------------+
+   |EXPORTER_SECRET                |Exporter   |[I-D.ietf-tls-keylogfile]|
+   |                               |secret     |                         |
+   |                               |after      |                         |
+   |                               |handshake  |                         |
+   +-------------------------------+-----------+-------------------------+
+
+                                  Table 1
+
+   This documents defines two additional labels in Section 3:
+
+   *  ECH_SECRET, which contains KEM shared secret for the ECH
+
+   *  ECH_CONFIG, which contains ECHConfig used for construction of the
+      ECH
+
+   New assignments in the "SSLKEYLOGFILE Labels" registry will be
+   administered by IANA through Expert Review [RFC8126].  Designated
+   Experts are requested to ensure that defined labels do not overlap in
+   names or semantics, and have clear definitions.
+
+   Registration requests must be sent to the tls@ietf.org mailing list
+   for review and comment, with an appropriate subject (e.g., "Request
+   for SSLKEYLOGFILE Label: example").
+
+   Within the review period of two weeks, the Designated Experts will
+   either approve or deny the registration request, communicating this
+   decision to the review list and IANA.  Denials should include an
+   explanation and, if applicable, suggestions as to how to make the
+   request successful.
+
+   IANA must only accept registry updates from the Designated Experts
+   and should direct all requests for registration to the TLS mailing
+   list.
 
 7.  References
 
@@ -207,6 +288,11 @@ Table of Contents
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/rfc/rfc2119>.
+
+   [RFC8126]  Cotton, M., Leiba, B., and T. Narten, "Guidelines for
+              Writing an IANA Considerations Section in RFCs", BCP 26,
+              RFC 8126, DOI 10.17487/RFC8126, June 2017,
+              <https://www.rfc-editor.org/rfc/rfc8126>.
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
@@ -238,8 +324,8 @@ Table of Contents
 
 Acknowledgments
 
-   We would like to thank Stephen Farrell, Martin Thomson and Peter Wu
-   for their review comments.
+   We would like to thank Stephen Farrell, Rich Salz, Martin Thomson and
+   Peter Wu for their review comments.
 
 Authors' Addresses
 

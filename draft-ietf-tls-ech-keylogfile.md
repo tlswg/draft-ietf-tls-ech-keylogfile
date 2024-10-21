@@ -28,10 +28,10 @@ author:
     organization: Zscaler
     email: yrosomakho@zscaler.com
  -
-       name: Hannes Tschofenig
-       org: University of Applied Sciences Bonn-Rhein-Sieg
-       abbrev: H-BRS
-       email: Hannes.Tschofenig@gmx.net
+    name: Hannes Tschofenig
+    org: University of Applied Sciences Bonn-Rhein-Sieg
+    abbrev: H-BRS
+    email: Hannes.Tschofenig@gmx.net
 
 normative:
 
@@ -56,7 +56,7 @@ In many implementations, the file that the secrets are logged to is specified in
 
 {::boilerplate bcp14-tagged}
 
-# SSLKEYLOGFILE Labels for ECH
+# SSLKEYLOGFILE Labels for ECH {#labels}
 
 This document defines two new labels for SSLKEYLOGFILE format: ECH_SECRET and ECH_CONFIG. The client SHOULD log the labels if it offered ECH regardless of server acceptance. The server MAY log the labels only if it successfully decrypted and accepted ECH offered by the client. The 32-byte random value from the Outer ClientHello message is used as the client_random value for these log records. The client MUST NOT log the labels for connections that use the GREASE ECH extension (see Section 6.2 of {{!I-D.ietf-tls-esni}}).
 
@@ -82,19 +82,50 @@ This specification extends the SSLKEYLOGFILE specification {{!I-D.ietf-tls-keylo
 
 - Access to the ECH_SECRET record in the SSLKEYLOGFILE allows the attacker to decrypt the ECH extension and thereby reveal the content of the ClientHello message, including the payload of the Server Name Indication (SNI) extension.
 
-- Access to the HPKE-established shared secret introduces a potential attack surface against the HPKE library since access to this keying material is not ncessarily available otherwise.
+- Access to the HPKE-established shared secret introduces a potential attack surface against the HPKE library since access to this keying material is normally not available otherwise.
 
 Implementers MUST take measures to prevent unauthorized access to the SSLKEYLOGFILE text file.
 
-According to SSLKEYLOGFILE specification {{!I-D.ietf-tls-keylogfile}}, this extension is intended for use in systems where TLS only protects test data. While the access this information provides to TLS connections can be useful for diagnosing problems during development, this mechanism MUST NOT be used in a production environment.
+As per the SSLKEYLOGFILE specification {{!I-D.ietf-tls-keylogfile}}, this extension is intended for use in environments where TLS protects only test data. While the access it provides to TLS connections can be valuable for debugging during development, this mechanism MUST NOT be used in production environments. To minimize the risk of accidental activation in production, implementers SHOULD incorporate appropriate compile-time controls.
 
 # IANA Considerations
 
-This document has no IANA actions.
+IANA is requested to create a new registry "SSLKEYLOGFILE Labels", within the existing "Transport Layer Security (TLS) Parameters" registry page.
+This new registry reserves labels used for SSLKEYLOGFILE entries.
+The initial contents of this registry are as follows.
+
+| Value | Description | Reference |
+| --- | --- | --- |
+| CLIENT_RANDOM | Master secret in TLS 1.2 and earlier | {{!I-D.ietf-tls-keylogfile}} |
+| CLIENT_EARLY_TRAFFIC_SECRET | Secret for client early data records | {{!I-D.ietf-tls-keylogfile}} |
+| EARLY_EXPORTER_MASTER_SECRET | Early exporters secret | {{!I-D.ietf-tls-keylogfile}} |
+| CLIENT_HANDSHAKE_TRAFFIC_SECRET | Secret protecting client handshake | {{!I-D.ietf-tls-keylogfile}} |
+| SERVER_HANDSHAKE_TRAFFIC_SECRET | Secret protecting server handshake | {{!I-D.ietf-tls-keylogfile}} |
+| CLIENT_TRAFFIC_SECRET_0 | Secret protecting client records post handshake | {{!I-D.ietf-tls-keylogfile}} |
+| SERVER_TRAFFIC_SECRET_0 | Secret protecting server records post handshake | {{!I-D.ietf-tls-keylogfile}} |
+| EXPORTER_SECRET | Exporter secret after handshake | {{!I-D.ietf-tls-keylogfile}} |
+
+This documents defines two additional labels in {{labels}}:
+
+- ECH_SECRET, which contains KEM shared secret for the ECH
+- ECH_CONFIG, which contains ECHConfig used for construction of the ECH
+
+New assignments in the "SSLKEYLOGFILE Labels" registry will be administered by IANA through Expert Review {{!RFC8126}}.
+Designated Experts are requested to ensure that defined labels do not overlap in names or semantics, and have clear definitions.
+
+Registration requests must be sent to the tls@ietf.org mailing list for review and comment, with an appropriate subject
+(e.g., "Request for SSLKEYLOGFILE Label: example").
+
+Within the review period of two weeks, the Designated Experts will either approve or deny the registration request,
+communicating this decision to the review list and IANA.  Denials should include an explanation and, if applicable,
+suggestions as to how to make the request successful.
+
+IANA must only accept registry updates from the Designated Experts and should direct all requests for registration
+to the TLS mailing list.
 
 --- back
 
 # Acknowledgments
 {:numbered="false"}
 
-We would like to thank Stephen Farrell, Martin Thomson and Peter Wu for their review comments.
+We would like to thank Stephen Farrell, Rich Salz, Martin Thomson and Peter Wu for their review comments.

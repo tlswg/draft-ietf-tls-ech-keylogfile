@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-20T01:06:18.956361+00:00",
+  "timestamp": "2024-10-22T01:01:59.236237+00:00",
   "repo": "tlswg/draft-ietf-tls-ech-keylogfile",
   "labels": [
     {
@@ -55,16 +55,24 @@
       "id": "I_kwDOMBZrcM6Q4Bjy",
       "title": "Compile-time control",
       "url": "https://github.com/tlswg/draft-ietf-tls-ech-keylogfile/issues/4",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "yaroslavros",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "From Rich Salz on TLS WG mailing list:\r\n\r\n> I want the security considerations to recommend that this SHOULD be controlled by compile-time options, if possible, and definitely not enabled in general production use.",
       "createdAt": "2024-07-25T17:18:36Z",
-      "updatedAt": "2024-07-25T17:18:36Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-10-21T10:01:12Z",
+      "closedAt": "2024-10-21T10:01:12Z",
+      "comments": [
+        {
+          "author": "yaroslavros",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Addressed in https://github.com/tlswg/draft-ietf-tls-ech-keylogfile/pull/6",
+          "createdAt": "2024-10-20T18:56:56Z",
+          "updatedAt": "2024-10-20T18:56:56Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -198,6 +206,123 @@
           "createdAt": "2024-07-04T18:25:30Z",
           "updatedAt": "2024-07-04T18:25:30Z",
           "comments": []
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "id": "PR_kwDOMBZrcM5_PKJG",
+      "title": "Update draft-ietf-tls-ech-keylogfile.md",
+      "url": "https://github.com/tlswg/draft-ietf-tls-ech-keylogfile/pull/5",
+      "state": "MERGED",
+      "author": "hannestschofenig",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-10-20T17:59:10Z",
+      "updatedAt": "2024-10-20T18:56:19Z",
+      "baseRepository": "tlswg/draft-ietf-tls-ech-keylogfile",
+      "baseRefName": "main",
+      "baseRefOid": "aa70b90c48a2be788379f4254de5c6a1a980c9fa",
+      "headRepository": "tlswg/draft-ietf-tls-ech-keylogfile",
+      "headRefName": "hannestschofenig-patch-2",
+      "headRefOid": "0fd0e4246f3cb442d374af462d015afec92686ef",
+      "closedAt": "2024-10-20T18:56:19Z",
+      "mergedAt": "2024-10-20T18:56:19Z",
+      "mergedBy": "yaroslavros",
+      "mergeCommit": {
+        "oid": "481a2fd65529a65734b6a1380f1b3382a8f273a9"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 6,
+      "id": "PR_kwDOMBZrcM5_PO5I",
+      "title": "Added IANA considerations and compile-time recommendation wording.",
+      "url": "https://github.com/tlswg/draft-ietf-tls-ech-keylogfile/pull/6",
+      "state": "MERGED",
+      "author": "yaroslavros",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-10-20T18:56:00Z",
+      "updatedAt": "2024-10-21T10:00:57Z",
+      "baseRepository": "tlswg/draft-ietf-tls-ech-keylogfile",
+      "baseRefName": "main",
+      "baseRefOid": "481a2fd65529a65734b6a1380f1b3382a8f273a9",
+      "headRepository": "yaroslavros/draft-ietf-tls-ech-keylogfile",
+      "headRefName": "main",
+      "headRefOid": "f1bd3302e51342bd822d0cd1c5c7f967c057bf2e",
+      "closedAt": "2024-10-21T10:00:56Z",
+      "mergedAt": "2024-10-21T10:00:56Z",
+      "mergedBy": "yaroslavros",
+      "mergeCommit": {
+        "oid": "058feaaa0c041dd8e2643abdca7dc9c162dc21b4"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOMBZrcM6N5e1o",
+          "commit": {
+            "abbreviatedOid": "0ddf79c"
+          },
+          "author": "hannestschofenig",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-10-20T19:06:03Z",
+          "updatedAt": "2024-10-20T19:06:03Z",
+          "comments": [
+            {
+              "originalPosition": 25,
+              "body": "```suggestion\r\nIANA is requested to create a new registry \"SSLKEYLOGFILE Labels\", within the existing \"Transport Layer Security (TLS) Parameters\" registry page.\r\n```",
+              "createdAt": "2024-10-20T19:06:03Z",
+              "updatedAt": "2024-10-20T19:06:03Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMBZrcM6N5e40",
+          "commit": {
+            "abbreviatedOid": "d975f36"
+          },
+          "author": "hannestschofenig",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-10-20T19:07:28Z",
+          "updatedAt": "2024-10-20T19:07:28Z",
+          "comments": [
+            {
+              "originalPosition": 19,
+              "body": "```suggestion\r\nAs per the SSLKEYLOGFILE specification {{!I-D.ietf-tls-keylogfile}}, this extension is intended for use in environments where TLS protects only test data. While the access it provides to TLS connections can be valuable for debugging during development, this mechanism MUST NOT be used in production environments. To minimize the risk of accidental activation in production, implementers SHOULD incorporate appropriate compile-time controls.\r\n```",
+              "createdAt": "2024-10-20T19:07:28Z",
+              "updatedAt": "2024-10-20T19:07:29Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMBZrcM6N5e_u",
+          "commit": {
+            "abbreviatedOid": "b43b93e"
+          },
+          "author": "hannestschofenig",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-10-20T19:10:03Z",
+          "updatedAt": "2024-10-20T19:10:03Z",
+          "comments": [
+            {
+              "originalPosition": 19,
+              "body": "```suggestion\r\nAs per the SSLKEYLOGFILE specification {{!I-D.ietf-tls-keylogfile}}, this extension is intended for use in environments where TLS protects only test data. While the access it provides to TLS connections can be valuable for debugging during development, this mechanism MUST NOT be used in production environments. To minimize the risk of accidental activation in production, implementers SHOULD incorporate appropriate compile-time controls.\r\n```",
+              "createdAt": "2024-10-20T19:10:03Z",
+              "updatedAt": "2024-10-20T19:10:03Z"
+            }
+          ]
         }
       ]
     }
